@@ -1,0 +1,20 @@
+
+<html>
+<head>
+  <title>Card Game Lobby</title>
+</head>
+<body>
+
+  <h2> Welcome {{ user }}! </h2>
+
+  {% for game in games %}
+  {% if len(game.players) < game.numPlayers %}
+  <a href="{{ game.url }}">join</a> <br></br>
+  {% end %}
+  {% end %}
+
+  <a href="/new">New game of Battle Line</a>
+
+
+</body>
+</html>
