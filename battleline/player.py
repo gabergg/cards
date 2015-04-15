@@ -1,20 +1,17 @@
 #!/usr/bin/env python
 
+from battleline.deck import TroopDeck
+
 Handsize = 7
 
 class Hand(object):
-    def __init__(self):
+    def __init__(self, game):
         self.cards = []
         for i in range(Handsize):
-            self.cards.append(TroopDeck.draw())
-
-    def place(card, set):
-        if set == 'homeSet':
-            self.homeSet.append(card)
-        else:
-            self.awaySet.append(card)
+            self.cards.append(game.troopDeck.draw())
 
 class Player(object):
-    def __init__(self, name):
+    def __init__(self, name, game):
         self.flags = []
         self.name = name
+        self.hand = Hand(game)

@@ -5,6 +5,10 @@
 </head>
 <body>
 
+  <script>
+  var me = "{{user}}";
+  </script>
+
   <h2> Welcome {{ user }}! </h2>
 
   {% for game in games %}
@@ -14,6 +18,7 @@
   {% end %}
 
   <a href="/new">New game of Battle Line</a>
+
 
 
 </body>

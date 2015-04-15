@@ -14,7 +14,7 @@ class Game(object):
         self.tacticDeck = TacticDeck()
         self.numPlayers = Numplayers
         self.board = Board();
-        self.players.append(Player(creator))
+        self.players.append(Player(creator, self))
         # for i in range(Numplayers):
         #     self.players.append(Player(i+1))
 

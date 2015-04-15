@@ -1,4 +1,8 @@
-$(document).ready(function() {
+$(function() {
+    var waka="hey";
+});
+
+/*$(document).ready(function() {
     if (!window.console) window.console = {};
     if (!window.console.log) window.console.log = function() {};
 
@@ -52,3 +56,4 @@ var updater = {
         node.slideDown();
     }
 };
+*/

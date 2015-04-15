@@ -49,9 +49,19 @@ class TroopDeck(object):
                 self.cards.append(Troop(Troops[value], color, value))
         shuffle(self.cards)
 
+    def draw(self):
+        if self.cards:
+            return self.cards.pop()
+        return 0
+
 class TacticDeck(object):
     def __init__(self):
         self.cards = []
         for name in Tactics:
             self.cards.append(Card(name))
         shuffle(self.cards)
+
+    def draw(self):
+        if self.cards:
+            return self.cards.pop()
+        return 0

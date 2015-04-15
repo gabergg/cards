@@ -84,24 +84,20 @@ class JoinGameHandler(BaseHandler):
         self.game = game
 
     def get(self):
-        player = Player(self.get_current_user())
-        app.add_handlers(r'.*$', [(self.request.uri + '/' + str(id(player)),
+        player = Player(self.get_current_user(), self.game)
+        app.add_handlers(r'.*$', [('/' + str(id(player)) + '/ws',
              PlayerWebSocket, {'player': player})])
-        self.redirect(self.request.uri + '/' + str(id(player)))
-
+        self.write(loader.load('ingame.html').generate(user=str(id(player))))
 
 class PlayerWebSocket(tornado.websocket.WebSocketHandler):
     def __init__(self, *args, **kwargs):
-        print 'wattttt'
         self.player = kwargs.pop('player')
         print 'Creating a new playersocket for %s' % self.player.name
         self.player.socket = self
         super(PlayerWebSocket, self).__init__(*args, **kwargs)
-        self.write(loader.load('ingame.html').generate(user=self.get_current_user()))
 
     def open(self):
         print '%s joined' % (self.player.name)
-        self.write(loader.load('ingame.html').generate(user=self.get_current_user()))
 
     def on_close(self):
         print '%s left' % (self.player.name)
